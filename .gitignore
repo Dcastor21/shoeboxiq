@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Secrets and local data: never commit these
+.env
+.env.*
+!.env.example
+data/
+exports/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Frontend (arrives in Step 8)
+node_modules/
+web/dist/

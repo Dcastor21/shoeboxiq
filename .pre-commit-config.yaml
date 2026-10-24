@@ -1,0 +1,27 @@
+# Runs before every commit. Ruff runs from uv.lock, so it is the same
+# version CI uses; there is no second copy to keep in sync.
+minimum_pre_commit_version: "4.4.0"
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v6.0.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - id: check-toml
+  - id: check-merge-conflict
+  - id: check-added-large-files
+    args: [ "--maxkb=500" ]
+  - id: detect-private-key
+- repo: local
+  hooks:
+  - id: ruff-check
+    name: ruff check
+    entry: uv run --frozen ruff check --fix
+    language: unsupported
+    types_or: [ python, pyi ]
+  - id: ruff-format
+    name: ruff format
+    entry: uv run --frozen ruff format
+    language: unsupported
+    types_or: [ python, pyi ]
